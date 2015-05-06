@@ -79,7 +79,7 @@ function! sasscompile#SassCompile()
         redir END
 
         cgetexpr @a
-        copen
+        " copen
     endif
 
     exec 'silent cd '.fdir
