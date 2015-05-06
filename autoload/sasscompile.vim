@@ -18,6 +18,9 @@ endif
 if !exists("g:sass_compile_aftercmd")
     let g:sass_compile_aftercmd = ''
 endif
+if !exists("g:sass_compile_option")
+    let g:sass_compile_option = ''
+endif
 
 function! sasscompile#CompassCheck()
     if filereadable('config.rb')
@@ -60,7 +63,7 @@ function! sasscompile#SassCompile()
     else
         let dir = searchparent#Dir(g:sass_compile_cssdir)
         if dir != ''
-            let cmd = 'sass --update '.fdir.':'.dir
+            let cmd = 'sass --update '.g:sass_compile_option.' '.fdir.':'.dir
         endif
     endif
 
