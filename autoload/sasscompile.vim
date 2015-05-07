@@ -84,7 +84,7 @@ function! sasscompile#SassCompile()
             call system(cmd)
         redir END
 
-        cgetexpr @a
+        " cgetexpr @a
         " copen
     endif
 
