@@ -62,8 +62,9 @@ function! sasscompile#SassCompile()
         endif
     else
         let dir = searchparent#Dir(g:sass_compile_cssdir)
+        let sdir = searchparent#Dir(g:sass_compile_sassdir)
         if dir != ''
-            let cmd = 'sass --update '.g:sass_compile_option.' '.fdir.':'.dir
+            let cmd = 'sass --update '.g:sass_compile_option.' '.sdir.':'.dir
         endif
     endif
 
@@ -73,7 +74,7 @@ function! sasscompile#SassCompile()
         endif
         if g:sass_compile_aftercmd != ''
             " let cmd = "sasscompileresult=$(".cmd."|sed s/'\[[0-9]*m'/''/g|tr '\\n' '__'|tr ' ' '_')\n ".g:sass_compile_aftercmd
-            let cmd .= " && sasscompiledist=".dir.expand('%:t:r').".css \n "
+            let cmd .= " && sasscompiledist=".dir.g:sass_compile_cssfile."\n "
             let cmd .= g:sass_compile_aftercmd
         endif
 
