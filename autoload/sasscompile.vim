@@ -74,7 +74,7 @@ function! sasscompile#SassCompile()
         endif
         if g:sass_compile_aftercmd != ''
             " let cmd = "sasscompileresult=$(".cmd."|sed s/'\[[0-9]*m'/''/g|tr '\\n' '__'|tr ' ' '_')\n ".g:sass_compile_aftercmd
-            let cmd .= " && sasscompiledist=".dir.g:sass_compile_cssfile."\n "
+            let cmd .= " && sasscompiledist=".dir."\n "
             let cmd .= g:sass_compile_aftercmd
         endif
 
