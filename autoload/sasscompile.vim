@@ -54,18 +54,14 @@ function! sasscompile#SassCompile()
     let compassFlg = 0
 
     if compassconf != ''
-        if readfile(compassconf)[0] != '# auto-compile stopped.'
-            let dir = fnamemodify(compassconf, ':h')
-            exec 'silent cd '.dir
-            " let cmd = system('which compass').' compile'
-            let cmd = 'compass compile'
-        endif
-    else
-        let dir = searchparent#Dir(g:sass_compile_cssdir)
-        let sdir = searchparent#Dir(g:sass_compile_sassdir)
-        if dir != ''
-            let cmd = 'sass --update '.g:sass_compile_option.' '.sdir.':'.dir
-        endif
+        let cdir = fnamemodify(compassconf, ':h')
+        exec 'silent cd '.cdir
+    endif
+
+    let dir = searchparent#Dir(g:sass_compile_cssdir)
+    let sdir = searchparent#Dir(g:sass_compile_sassdir)
+    if dir != ''
+        let cmd = 'sass --update '.g:sass_compile_option.' '.sdir.':'.dir
     endif
 
     if cmd != ''
